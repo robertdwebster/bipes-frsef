@@ -302,6 +302,13 @@
     <category name="Machine" colour="%{BKY_VARIABLES_HUE}">
     -->
 
+<category name="FRSEF">
+<block type="frsef_buzzer">
+</block>
+</category>
+
+<sep></sep>
+
   <category name="Python">
       <label text="Python"></label>
 <block type="try_catch"></block>
@@ -2835,6 +2842,9 @@
 <category name="wipy">
 <block type="wipy_heartbeat">
 </block>
+<block type="frsef_buzzer">
+</block>
 </category>
+
 </category>
 </document>

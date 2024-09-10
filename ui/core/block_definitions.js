@@ -46,7 +46,7 @@ Blockly.Blocks['pwm_pico'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(230);
-    this.setTooltip(MSG["pwm_tooltip"]);
+    this.setTooltip("ahhhhh");
     this.setHelpUrl("https://docs.micropython.org/en/latest/esp32/quickref.html#pwm-pulse-width-modulation");
  },
   setID: function(id_) {
@@ -12569,3 +12569,28 @@ Blockly.Blocks['data_value'] = {
   }
 };
 
+Blockly.Blocks['frsef_buzzer'] = {
+  init: function(){
+    this.appendDummyInput()
+        .appendField("FRSEF Buzzer")
+    this.appendValueInput("pin")
+        .setCheck(null)
+	      .appendField(MSG["pin"]);
+    this.appendValueInput("frequency")
+        .setCheck("Number")
+	      .appendField(MSG["frequenzy"]);
+    this.appendValueInput("duty")
+        .setCheck("Number")
+	      .appendField(MSG["duty_cycle"]);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+    this.setTooltip(MSG["pwm_tooltip"]);
+ },
+  check (values, id) {
+    Tool.warningIfTrue (this, [
+      [() => (!isNaN(parseFloat(values [0])) && parseFloat(values [0]) % 1 != 0), `Cannot convert float to int directly.`],
+      [() => (!isNaN(parseFloat(values [1])) && parseFloat(values [1]) % 1 != 0), `Cannot convert float to int directly.`]
+    ]);
+  }
+};

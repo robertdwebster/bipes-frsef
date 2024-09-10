@@ -6698,3 +6698,15 @@ Blockly.Python['threepi_bump_right_is_pressed'] = function(block) {
 	var code = 'threepi_bump_sensors.right_is_pressed()';
 	return [code, Blockly.Python.ORDER_NONE];
 };
+
+Blockly.Python['frsef_buzzer'] = function(block) {
+	var value_pin = Blockly.Python.valueToCode(block, 'pin', Blockly.Python.ORDER_NONE);
+	var value_frequency = Blockly.Python.valueToCode(block, 'frequency', Blockly.Python.ORDER_ATOMIC);
+	var value_duty = Blockly.Python.valueToCode(block, 'duty', Blockly.Python.ORDER_ATOMIC);
+	Blockly.Python.definitions_['import_pin'] = 'from machine import Pin';
+	Blockly.Python.definitions_['import_pwm'] = 'from machine import PWM';
+
+  this.check([value_frequency,value_duty], value_pin);
+	var code = `pwm${value_pin} = PWM(Pin(${value_pin}))\npwm${value_pin}.freq(${value_frequency})\npwm${value_pin}.duty_u16(${value_duty})\n`;
+	return code;
+};
