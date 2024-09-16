@@ -12569,10 +12569,22 @@ Blockly.Blocks['data_value'] = {
   }
 };
 
-Blockly.Blocks['frsef_buzzer'] = {
+// START - Modifications for FRSEF Project
+//
+//     ______ _____   _____ ______ ______
+//    |  ____|  __ \ / ____|  ____|  ____|
+//    | |__  | |__) | (___ | |__  | |__   
+//    |  __| |  _  / \___ \|  __| |  __|  
+//    | |    | | \ \ ____) | |____| |     
+//    |_|    |_|  \_\_____/|______|_|     
+//
+//
+
+// Demo block - use the buzzer, very similar to existing PWM block
+Blockly.Blocks['frsef_buzzer_demo'] = {
   init: function(){
     this.appendDummyInput()
-        .appendField("FRSEF Buzzer")
+        .appendField("FRSEF Buzzer Demo")
     this.appendValueInput("pin")
         .setCheck(null)
 	      .appendField(MSG["pin"]);
@@ -12592,5 +12604,131 @@ Blockly.Blocks['frsef_buzzer'] = {
       [() => (!isNaN(parseFloat(values [0])) && parseFloat(values [0]) % 1 != 0), `Cannot convert float to int directly.`],
       [() => (!isNaN(parseFloat(values [1])) && parseFloat(values [1]) % 1 != 0), `Cannot convert float to int directly.`]
     ]);
+  }
+};
+
+// Pin declaration from Pi Pico list, digital
+Blockly.Blocks['frsef_pinout_digital'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldLabelSerializable(this.device_init), 'DEVICE') // will use device_init if new block or no device specification on XML.
+        .appendField('digital pin')
+        .appendField(new Blockly.FieldDropdown([
+          ['UART0', 'UART0'],
+          ['UART1', 'UART1'],
+          ['D16', 'D16'],
+          ['D18', 'D18'],
+          ['D20', 'D20'],
+          ['I2C0', 'I2C0'],
+          ['I2C1', 'I2C1'],
+          ['A0', 'A0'],
+          ['A1', 'A1'],
+          ['A2', 'A2']
+        ]), 'PIN');
+    this.getField('DEVICE').setVisible(false);
+    this.setOutput(true, 'frsef_pinout_digital'); // You can check that this type of block is used as a connection to another block, if the other block uses this string in setCheck
+    this.setColour(230);
+  },
+};
+
+
+// Pin declaration from Pi Pico list, analog 
+Blockly.Blocks['frsef_pinout_analog'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldLabelSerializable(this.device_init), 'DEVICE') // will use device_init if new block or no device specification on XML.
+        .appendField('analog pin')
+        .appendField(new Blockly.FieldDropdown([
+          ['A0', 'A0'],
+          ['A1', 'A1'],
+          ['A2', 'A2']
+        ]), 'PIN');
+    this.getField('DEVICE').setVisible(false);
+    this.setOutput(true, 'frsef_pinout_analog'); // You can check that this type of block is used as a connection to another block, if the other block uses this string in setCheck
+    this.setColour(230);
+  },
+};
+
+
+/// Start Mini PIR Sensor
+Blockly.Blocks['frsef_mini_pir_init'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldImage(
+                     "media/mini_pir.jpg",
+                     75,
+                     75,
+                     "*"))
+        .appendField("Start Mini PIR Motion Sensor");
+    this.appendValueInput("PIN")
+        .setCheck("frsef_pinout_digital") // set a string which the connecting block must have in common in its check
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("digital pin");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+  }
+};
+
+
+/// Read from Mini PIR Sensor
+Blockly.Blocks['frsef_mini_pir_read'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldImage(
+                     "media/mini_pir.jpg",
+                     75,
+                     75,
+                     "*"))
+        .appendField("Read from Mini PIR Motion Sensor");
+    this.appendValueInput("PIN")
+        .setCheck("frsef_pinout_digital") // set a string which the connecting block must have in common in its check
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("digital pin");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+  }
+};
+
+
+/// Start Loudness Sensor
+Blockly.Blocks['frsef_loudness_init'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldImage(
+                     "media/loudness.jpg",
+                     75,
+                     75,
+                     "*"))
+        .appendField("Start Loudness Sensor");
+    this.appendValueInput("PIN")
+        .setCheck("frsef_pinout_analog") // set a string which the connecting block must have in common in its check
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("analog pin");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+  }
+};
+
+
+/// Read from Loudness Sensor
+Blockly.Blocks['frsef_loudness_read'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldImage(
+                     "media/loudness.jpg",
+                     75,
+                     75,
+                     "*"))
+        .appendField("Read from Loudness Sensor");
+    this.appendValueInput("PIN")
+        .setCheck("frsef_pinout_analog") // set a string which the connecting block must have in common in its check
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("analog pin");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
   }
 };

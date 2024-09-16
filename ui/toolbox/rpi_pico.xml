@@ -303,7 +303,19 @@
     -->
 
 <category name="FRSEF">
-<block type="frsef_buzzer">
+<block type="frsef_buzzer_demo">
+</block>
+<block type="frsef_pinout_digital">
+</block>
+<block type="frsef_pinout_analog">
+</block>
+<block type="frsef_mini_pir_init">
+</block>
+<block type="frsef_mini_pir_read">
+</block>
+<block type="frsef_loudness_init">
+</block>
+<block type="frsef_loudness_read">
 </block>
 </category>
 
@@ -2841,8 +2853,6 @@
 </category>
 <category name="wipy">
 <block type="wipy_heartbeat">
-</block>
-<block type="frsef_buzzer">
 </block>
 </category>
 

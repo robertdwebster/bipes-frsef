@@ -6699,7 +6699,18 @@ Blockly.Python['threepi_bump_right_is_pressed'] = function(block) {
 	return [code, Blockly.Python.ORDER_NONE];
 };
 
-Blockly.Python['frsef_buzzer'] = function(block) {
+// START - Modifications for FRSEF Project
+//
+//     ______ _____   _____ ______ ______
+//    |  ____|  __ \ / ____|  ____|  ____|
+//    | |__  | |__) | (___ | |__  | |__   
+//    |  __| |  _  / \___ \|  __| |  __|  
+//    | |    | | \ \ ____) | |____| |     
+//    |_|    |_|  \_\_____/|______|_|     
+//
+//
+
+Blockly.Python['frsef_buzzer_demo'] = function(block) {
 	var value_pin = Blockly.Python.valueToCode(block, 'pin', Blockly.Python.ORDER_NONE);
 	var value_frequency = Blockly.Python.valueToCode(block, 'frequency', Blockly.Python.ORDER_ATOMIC);
 	var value_duty = Blockly.Python.valueToCode(block, 'duty', Blockly.Python.ORDER_ATOMIC);
@@ -6709,4 +6720,50 @@ Blockly.Python['frsef_buzzer'] = function(block) {
   this.check([value_frequency,value_duty], value_pin);
 	var code = `pwm${value_pin} = PWM(Pin(${value_pin}))\npwm${value_pin}.freq(${value_frequency})\npwm${value_pin}.duty_u16(${value_duty})\n`;
 	return code;
+};
+
+// frsef_pinout_digital
+Blockly.Python['frsef_pinout_digital'] = function(block) {
+	var pin = block.getFieldValue('PIN');
+	
+	return [pin, Blockly.Python.ORDER_NONE];
+};
+
+// frsef_pinout_analog
+Blockly.Python['frsef_pinout_analog'] = function(block) {
+	var pin = block.getFieldValue('PIN');
+	
+	return [pin, Blockly.Python.ORDER_NONE];
+};
+
+// frsef_mini_pir_init
+Blockly.Python['frsef_mini_pir_init'] = function(block) {
+	var pin = block.getFieldValue('PIN');
+	
+	return `#frsef_mini_pir_init: ${pin} \n`;
+	// return [pin, Blockly.Python.ORDER_NONE];
+};
+
+// frsef_mini_pir_read
+Blockly.Python['frsef_mini_pir_read'] = function(block) {
+	var pin = block.getFieldValue('PIN');
+	
+	return `#frsef_mini_pir_read: ${pin} \n`;
+	// return [pin, Blockly.Python.ORDER_NONE];
+};
+
+// frsef_loudness_init
+Blockly.Python['frsef_loudness_init'] = function(block) {
+	var pin = block.getFieldValue('PIN');
+	
+	return `#frsef_loudness_init: ${pin} \n`;
+	// return [pin, Blockly.Python.ORDER_NONE];
+};
+
+// frsef_loudness_read
+Blockly.Python['frsef_loudness_read'] = function(block) {
+	var pin = block.getFieldValue('PIN');
+	
+	return `#frsef_loudness_read: ${pin} \n`;
+	// return [pin, Blockly.Python.ORDER_NONE];
 };
