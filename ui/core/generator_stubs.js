@@ -6738,32 +6738,73 @@ Blockly.Python['frsef_pinout_analog'] = function(block) {
 
 // frsef_mini_pir_init
 Blockly.Python['frsef_mini_pir_init'] = function(block) {
-	var pin = block.getFieldValue('PIN');
+	var value_pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_NONE);
 	
-	return `#frsef_mini_pir_init: ${pin} \n`;
+	return `#frsef_mini_pir_init: ${value_pin} \n`;
 	// return [pin, Blockly.Python.ORDER_NONE];
 };
 
 // frsef_mini_pir_read
 Blockly.Python['frsef_mini_pir_read'] = function(block) {
-	var pin = block.getFieldValue('PIN');
+	var value_pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_NONE);
 	
-	return `#frsef_mini_pir_read: ${pin} \n`;
+	return `#frsef_mini_pir_read: ${value_pin} \n`;
 	// return [pin, Blockly.Python.ORDER_NONE];
 };
 
 // frsef_loudness_init
 Blockly.Python['frsef_loudness_init'] = function(block) {
-	var pin = block.getFieldValue('PIN');
+	var value_pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_NONE);
 	
-	return `#frsef_loudness_init: ${pin} \n`;
+	return `#frsef_loudness_init: ${value_pin} \n`;
 	// return [pin, Blockly.Python.ORDER_NONE];
 };
 
 // frsef_loudness_read
 Blockly.Python['frsef_loudness_read'] = function(block) {
-	var pin = block.getFieldValue('PIN');
+	var value_pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_NONE);
 	
-	return `#frsef_loudness_read: ${pin} \n`;
+	return `#frsef_loudness_read: ${value_pin} \n`;
+	// return [pin, Blockly.Python.ORDER_NONE];
+};
+
+// frsef_light_init
+Blockly.Python['frsef_light_init'] = function(block) {
+	var value_pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_NONE);
+	
+	return `#frsef_light_init: ${value_pin} \n`;
+	// return [pin, Blockly.Python.ORDER_NONE];
+};
+
+// frsef_light_read
+Blockly.Python['frsef_light_read'] = function(block) {
+	var value_pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_NONE);
+	
+	return `#frsef_light_read: ${value_pin} \n`;
+	// return [pin, Blockly.Python.ORDER_NONE];
+};
+
+// frsef_LED_button_init
+Blockly.Python['frsef_LED_button_init'] = function(block) {
+	var value_pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_NONE);
+	
+	return `#frsef_LED_button_init: ${value_pin} \n`;
+	// return [pin, Blockly.Python.ORDER_NONE];
+};
+
+// frsef_LED_button_read
+Blockly.Python['frsef_LED_button_read'] = function(block) {
+	var value_pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_NONE);
+	
+	return `#frsef_LED_button_read: ${value_pin} \n`;
+	// return [pin, Blockly.Python.ORDER_NONE];
+};
+
+// frsef_LED_button_set_LED
+Blockly.Python['frsef_LED_button_set_LED'] = function(block) {
+	var value_pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_NONE);
+	var state = block.getFieldValue('STATE'); // the state is a Blockly field, not a Blockly value
+	
+	return `#frsef_LED_button_set_LED PIN: ${value_pin} \n#frsef_LED_button_set_LED STATE: ${state} \n`;
 	// return [pin, Blockly.Python.ORDER_NONE];
 };

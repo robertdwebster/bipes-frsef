@@ -317,6 +317,16 @@
 </block>
 <block type="frsef_loudness_read">
 </block>
+<block type="frsef_light_init">
+</block>
+<block type="frsef_light_read">
+</block>
+<block type="frsef_LED_button_init">
+</block>
+<block type="frsef_LED_button_read">
+</block>
+<block type="frsef_LED_button_set_LED">
+</block>
 </category>
 
 <sep></sep>
