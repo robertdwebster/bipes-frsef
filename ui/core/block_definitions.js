@@ -12584,7 +12584,7 @@ Blockly.Blocks['data_value'] = {
 Blockly.Blocks['frsef_buzzer_demo'] = {
   init: function(){
     this.appendDummyInput()
-        .appendField("FRSEF Buzzer Demo")
+        .appendField("Buzzer Example")
     this.appendValueInput("pin")
         .setCheck(null)
 	      .appendField(MSG["pin"]);

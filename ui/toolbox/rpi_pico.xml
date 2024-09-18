@@ -302,13 +302,19 @@
     <category name="Machine" colour="%{BKY_VARIABLES_HUE}">
     -->
 
-<category name="FRSEF">
+<category name="Project">
 <block type="frsef_buzzer_demo">
 </block>
+</category>
+
+<category name="Project - Pins">
 <block type="frsef_pinout_digital">
 </block>
 <block type="frsef_pinout_analog">
 </block>
+</category>
+
+<category name="Project - Sensors">
 <block type="frsef_mini_pir_init">
 </block>
 <block type="frsef_mini_pir_read">
@@ -321,15 +327,18 @@
 </block>
 <block type="frsef_light_read">
 </block>
+<block type="frsef_ultrasonic_init">
+</block>
+<block type="frsef_ultrasonic_read">
+</block>
+</category>
+
+<category name="Project - Inputs / Outputs">
 <block type="frsef_LED_button_init">
 </block>
 <block type="frsef_LED_button_read">
 </block>
 <block type="frsef_LED_button_set_LED">
-</block>
-<block type="frsef_ultrasonic_init">
-</block>
-<block type="frsef_ultrasonic_read">
 </block>
 <block type="frsef_buzzer_init">
 </block>
