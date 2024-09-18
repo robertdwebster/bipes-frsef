@@ -12819,12 +12819,175 @@ Blockly.Blocks['frsef_LED_button_set_LED'] = {
                      "*"))
         .appendField("Set LED on LED Button");
     this.appendDummyInput()
-        .appendField('state')
+        .appendField('instruction')
         .appendField(new Blockly.FieldDropdown([
           ['on', 'ON'],
           ['off', 'OFF'],
           ['blink', 'BLINK']
         ]), 'STATE')
+        .setAlign(Blockly.ALIGN_RIGHT);
+    this.appendValueInput("PIN")
+        .setCheck("frsef_pinout_digital") // set a string which the connecting block must have in common in its check
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("digital pin");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+  }
+};
+
+/// Start Ultrasonic Ranger
+Blockly.Blocks['frsef_ultrasonic_init'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldImage(
+                     "media/ultrasonic.jpg",
+                     80,
+                     80,
+                     "*"))
+        .appendField("Start Ultrasonic Ranger");
+    this.appendValueInput("PIN")
+        .setCheck("frsef_pinout_digital") // set a string which the connecting block must have in common in its check
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("digital pin");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+  }
+};
+
+/// Read from Ultrasonic Sensor
+Blockly.Blocks['frsef_ultrasonic_read'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldImage(
+                     "media/ultrasonic.jpg",
+                     75,
+                     75,
+                     "*"))
+        .appendField("Read from Ultrasonic Ranger");
+    this.appendValueInput("PIN")
+        .setCheck("frsef_pinout_digital") // set a string which the connecting block must have in common in its check
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("digital pin");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+  }
+};
+
+/// Declare Buzzer
+Blockly.Blocks['frsef_buzzer_init'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldImage(
+                     "media/buzzer.jpg",
+                     75,
+                     75,
+                     "*"))
+        .appendField("Declare Buzzer");
+    this.appendValueInput("PIN")
+        .setCheck("frsef_pinout_digital") // set a string which the connecting block must have in common in its check
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("digital pin");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+  }
+};
+
+/// Set Buzzer
+Blockly.Blocks['frsef_buzzer_set'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldImage(
+                     "media/buzzer.jpg",
+                     75,
+                     75,
+                     "*"))
+        .appendField("Set Buzzer");
+    this.appendDummyInput()
+        .appendField('instruction')
+        .appendField(new Blockly.FieldDropdown([
+          ['on', 'ON'],
+          ['off', 'OFF'],
+          ['beep', 'BEEP']
+        ]), 'STATE')
+        .setAlign(Blockly.ALIGN_RIGHT);
+    this.appendValueInput("PIN")
+        .setCheck("frsef_pinout_digital") // set a string which the connecting block must have in common in its check
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("digital pin");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+  }
+};
+
+/// Declare RGB LED
+Blockly.Blocks['frsef_LED_init'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldImage(
+                     "media/chainable_led.jpg",
+                     75,
+                     75,
+                     "*"))
+        .appendField("Declare LED");
+    this.appendValueInput("PIN")
+        .setCheck("frsef_pinout_digital") // set a string which the connecting block must have in common in its check
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("digital pin");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+  }
+};
+
+/// Set RGB LED on/off
+Blockly.Blocks['frsef_LED_set_state'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldImage(
+                     "media/chainable_led.jpg",
+                     75,
+                     75,
+                     "*"))
+        .appendField("Turn LED on or off");
+    this.appendDummyInput()
+        .appendField('instruction')
+        .appendField(new Blockly.FieldDropdown([
+          ['on', 'ON'],
+          ['off', 'OFF']
+        ]), 'STATE')
+        .setAlign(Blockly.ALIGN_RIGHT);
+    this.appendValueInput("PIN")
+        .setCheck("frsef_pinout_digital") // set a string which the connecting block must have in common in its check
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("digital pin");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+  }
+};
+
+/// Change RGB LED color
+Blockly.Blocks['frsef_LED_set_color'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldImage(
+                     "media/chainable_led.jpg",
+                     75,
+                     75,
+                     "*"))
+        .appendField("Change LED color");
+    this.appendDummyInput()
+        .appendField('color')
+        .appendField(new Blockly.FieldDropdown([
+          ['red', 'RED'],
+          ['green', 'GREEN'],
+          ['blue', 'BLUE']
+        ]), 'COLOR')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.appendValueInput("PIN")
         .setCheck("frsef_pinout_digital") // set a string which the connecting block must have in common in its check

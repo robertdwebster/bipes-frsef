@@ -6808,3 +6808,62 @@ Blockly.Python['frsef_LED_button_set_LED'] = function(block) {
 	return `#frsef_LED_button_set_LED PIN: ${value_pin} \n#frsef_LED_button_set_LED STATE: ${state} \n`;
 	// return [pin, Blockly.Python.ORDER_NONE];
 };
+
+// frsef_ultrasonic_init
+Blockly.Python['frsef_ultrasonic_init'] = function(block) {
+	var value_pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_NONE);
+	
+	return `#frsef_ultrasonic_init: ${value_pin} \n`;
+	// return [pin, Blockly.Python.ORDER_NONE];
+};
+
+// frsef_ultrasonic_read
+Blockly.Python['frsef_ultrasonic_read'] = function(block) {
+	var value_pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_NONE);
+	
+	return `#frsef_ultrasonic_read: ${value_pin} \n`;
+	// return [pin, Blockly.Python.ORDER_NONE];
+};
+
+// frsef_buzzer_init
+Blockly.Python['frsef_buzzer_init'] = function(block) {
+	var value_pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_NONE);
+	
+	return `#frsef_buzzer_init: ${value_pin} \n`;
+	// return [pin, Blockly.Python.ORDER_NONE];
+};
+
+// frsef_buzzer_set
+Blockly.Python['frsef_buzzer_set'] = function(block) {
+	var value_pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_NONE);
+	var state = block.getFieldValue('STATE'); // the state is a Blockly field, not a Blockly value
+	
+	return `#frsef_buzzer_set PIN: ${value_pin} \n#frsef_buzzer_set STATE: ${state} \n`;
+	// return [pin, Blockly.Python.ORDER_NONE];
+};
+
+// frsef_LED_init
+Blockly.Python['frsef_LED_init'] = function(block) {
+	var value_pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_NONE);
+	
+	return `#frsef_LED_init: ${value_pin} \n`;
+	// return [pin, Blockly.Python.ORDER_NONE];
+};
+
+// frsef_LED_set_state
+Blockly.Python['frsef_LED_set_state'] = function(block) {
+	var value_pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_NONE);
+	var state = block.getFieldValue('STATE'); // the state is a Blockly field, not a Blockly value
+	
+	return `#frsef_LED_set_state PIN: ${value_pin} \n#frsef_LED_set_state STATE: ${state} \n`;
+	// return [pin, Blockly.Python.ORDER_NONE];
+};
+
+// frsef_LED_set_color
+Blockly.Python['frsef_LED_set_color'] = function(block) {
+	var value_pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_NONE);
+	var color = block.getFieldValue('COLOR'); // the state is a Blockly field, not a Blockly value
+	
+	return `#frsef_LED_set_color PIN: ${value_pin} \n#frsef_LED_set_color COLOR: ${color} \n`;
+	// return [pin, Blockly.Python.ORDER_NONE];
+};

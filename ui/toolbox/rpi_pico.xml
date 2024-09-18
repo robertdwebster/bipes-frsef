@@ -327,6 +327,20 @@
 </block>
 <block type="frsef_LED_button_set_LED">
 </block>
+<block type="frsef_ultrasonic_init">
+</block>
+<block type="frsef_ultrasonic_read">
+</block>
+<block type="frsef_buzzer_init">
+</block>
+<block type="frsef_buzzer_set">
+</block>
+<block type="frsef_LED_init">
+</block>
+<block type="frsef_LED_set_state">
+</block>
+<block type="frsef_LED_set_color">
+</block>
 </category>
 
 <sep></sep>
