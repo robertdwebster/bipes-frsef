@@ -12580,30 +12580,18 @@ Blockly.Blocks['data_value'] = {
 //
 //
 
-// Demo block - use the buzzer, very similar to existing PWM block
-Blockly.Blocks['frsef_buzzer_demo'] = {
-  init: function(){
+/// Start Grove Board (this is used to add functions to the generated code that will be used by all blocks)
+Blockly.Blocks['frsef_grove_board_init'] = {
+  init: function() {
     this.appendDummyInput()
-        .appendField("Buzzer Example")
-    this.appendValueInput("pin")
-        .setCheck(null)
-	      .appendField(MSG["pin"]);
-    this.appendValueInput("frequency")
-        .setCheck("Number")
-	      .appendField(MSG["frequenzy"]);
-    this.appendValueInput("duty")
-        .setCheck("Number")
-	      .appendField(MSG["duty_cycle"]);
-    this.setPreviousStatement(true, null);
+        .appendField(new Blockly.FieldImage(
+                     "media/grove_board.png",
+                     100,
+                     100,
+                     "*"))
+        .appendField("Start Grove board");
     this.setNextStatement(true, null);
     this.setColour(230);
-    this.setTooltip(MSG["pwm_tooltip"]);
- },
-  check (values, id) {
-    Tool.warningIfTrue (this, [
-      [() => (!isNaN(parseFloat(values [0])) && parseFloat(values [0]) % 1 != 0), `Cannot convert float to int directly.`],
-      [() => (!isNaN(parseFloat(values [1])) && parseFloat(values [1]) % 1 != 0), `Cannot convert float to int directly.`]
-    ]);
   }
 };
 
@@ -12876,54 +12864,6 @@ Blockly.Blocks['frsef_ultrasonic_read'] = {
   }
 };
 
-/// Declare Buzzer
-Blockly.Blocks['frsef_buzzer_init'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField(new Blockly.FieldImage(
-                     "media/buzzer.jpg",
-                     75,
-                     75,
-                     "*"))
-        .appendField("Declare Buzzer");
-    this.appendValueInput("PIN")
-        .setCheck("frsef_pinout_digital") // set a string which the connecting block must have in common in its check
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField("digital pin");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(230);
-  }
-};
-
-/// Set Buzzer
-Blockly.Blocks['frsef_buzzer_set'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField(new Blockly.FieldImage(
-                     "media/buzzer.jpg",
-                     75,
-                     75,
-                     "*"))
-        .appendField("Set Buzzer");
-    this.appendDummyInput()
-        .appendField('instruction')
-        .appendField(new Blockly.FieldDropdown([
-          ['on', 'ON'],
-          ['off', 'OFF'],
-          ['beep', 'BEEP']
-        ]), 'STATE')
-        .setAlign(Blockly.ALIGN_RIGHT);
-    this.appendValueInput("PIN")
-        .setCheck("frsef_pinout_digital") // set a string which the connecting block must have in common in its check
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField("digital pin");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(230);
-  }
-};
-
 /// Declare RGB LED
 Blockly.Blocks['frsef_LED_init'] = {
   init: function() {
@@ -12967,6 +12907,7 @@ Blockly.Blocks['frsef_LED_set_state'] = {
         .appendField("digital pin");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
+    // this.setOutput(true, null);
     this.setColour(230);
   }
 };
@@ -12996,5 +12937,105 @@ Blockly.Blocks['frsef_LED_set_color'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(230);
+  }
+};
+
+/// Declare Buzzer
+Blockly.Blocks['frsef_buzzer_init'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldImage(
+                     "media/buzzer.jpg",
+                     75,
+                     75,
+                     "*"))
+        .appendField("Create Buzzer");
+        this.appendDummyInput()
+        .appendField('Grove connector')
+        .appendField(new Blockly.FieldDropdown([
+          ['UART0', 'UART0'],
+          ['UART1', 'UART1'],
+          ['D16', 'D16'],
+          ['D18', 'D18'],
+          ['D20', 'D20'],
+          ['I2C0', 'I2C0'],
+          ['I2C1', 'I2C1'],
+          ['A0', 'A0'],
+          ['A1', 'A1'],
+          ['A2', 'A2']
+        ]), 'CONNECTOR')
+        .setAlign(Blockly.ALIGN_RIGHT);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+  }
+};
+
+/// Set Buzzer
+Blockly.Blocks['frsef_buzzer_set'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldImage(
+                     "media/buzzer.jpg",
+                     75,
+                     75,
+                     "*"))
+        .appendField("Turn Buzzer to")
+        .appendField(new Blockly.FieldDropdown([
+          ['on', 'ON'],
+          ['off', 'OFF']
+        ]), 'STATE')
+        .setAlign(Blockly.ALIGN_RIGHT);
+    this.appendDummyInput()
+        .appendField('Grove connector')
+        .appendField(new Blockly.FieldDropdown([
+          ['UART0', 'UART0'],
+          ['UART1', 'UART1'],
+          ['D16', 'D16'],
+          ['D18', 'D18'],
+          ['D20', 'D20'],
+          ['I2C0', 'I2C0'],
+          ['I2C1', 'I2C1'],
+          ['A0', 'A0'],
+          ['A1', 'A1'],
+          ['A2', 'A2']
+        ]), 'CONNECTOR')
+        .setAlign(Blockly.ALIGN_RIGHT);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+  }
+};
+
+
+
+
+
+// ---
+
+// Demo block - use the buzzer, very similar to existing PWM block
+Blockly.Blocks['frsef_buzzer_demo'] = {
+  init: function(){
+    this.appendDummyInput()
+        .appendField("Buzzer Example")
+    this.appendValueInput("pin")
+        .setCheck(null)
+	      .appendField(MSG["pin"]);
+    this.appendValueInput("frequency")
+        .setCheck("Number")
+	      .appendField(MSG["frequenzy"]);
+    this.appendValueInput("duty")
+        .setCheck("Number")
+	      .appendField(MSG["duty_cycle"]);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+    this.setTooltip(MSG["pwm_tooltip"]);
+ },
+  check (values, id) {
+    Tool.warningIfTrue (this, [
+      [() => (!isNaN(parseFloat(values [0])) && parseFloat(values [0]) % 1 != 0), `Cannot convert float to int directly.`],
+      [() => (!isNaN(parseFloat(values [1])) && parseFloat(values [1]) % 1 != 0), `Cannot convert float to int directly.`]
+    ]);
   }
 };

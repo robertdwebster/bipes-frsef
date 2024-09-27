@@ -303,6 +303,8 @@
     -->
 
 <category name="Project">
+<block type="frsef_grove_board_init">
+</block>
 <block type="frsef_buzzer_demo">
 </block>
 </category>
