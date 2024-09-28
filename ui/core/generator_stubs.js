@@ -6810,31 +6810,6 @@ Blockly.Python['frsef_light_read'] = function(block) {
 	// return [pin, Blockly.Python.ORDER_NONE];
 };
 
-// frsef_LED_button_init
-Blockly.Python['frsef_LED_button_init'] = function(block) {
-	var value_pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_NONE);
-	
-	return `#frsef_LED_button_init: ${value_pin} \n`;
-	// return [pin, Blockly.Python.ORDER_NONE];
-};
-
-// frsef_LED_button_read
-Blockly.Python['frsef_LED_button_read'] = function(block) {
-	var value_pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_NONE);
-	
-	return `#frsef_LED_button_read: ${value_pin} \n`;
-	// return [pin, Blockly.Python.ORDER_NONE];
-};
-
-// frsef_LED_button_set_LED
-Blockly.Python['frsef_LED_button_set_LED'] = function(block) {
-	var value_pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_NONE);
-	var state = block.getFieldValue('STATE'); // the state is a Blockly field, not a Blockly value
-	
-	return `#frsef_LED_button_set_LED PIN: ${value_pin} \n#frsef_LED_button_set_LED STATE: ${state} \n`;
-	// return [pin, Blockly.Python.ORDER_NONE];
-};
-
 // frsef_ultrasonic_init
 Blockly.Python['frsef_ultrasonic_init'] = function(block) {
 	var value_pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_NONE);
@@ -6887,9 +6862,9 @@ Blockly.Python['frsef_buzzer_init'] = function(block) {
 	var connector = block.getFieldValue('CONNECTOR');
 
 	var code = 
-		`pwmBuzzer${connector} = PWM(Pin(grove_connector_lookup_pin1('${connector}')))\n` +
-		`pwmBuzzer${connector}.freq(888)\n` +
-		`pwmBuzzer${connector}.duty_u16(0)\n`;
+		`pwmBuzzer_${connector} = PWM(Pin(grove_connector_lookup_pin1('${connector}')))\n` +
+		`pwmBuzzer_${connector}.freq(888)\n` +
+		`pwmBuzzer_${connector}.duty_u16(0)\n`;
 
 	return `#frsef_buzzer_init: connector ${connector} \n` + code + '\n';
 };
@@ -6902,15 +6877,48 @@ Blockly.Python['frsef_buzzer_set'] = function(block) {
 	var code = `#frsef_buzzer_set connector: ${connector} \n#frsef_buzzer_set STATE: ${state} \n`
 
 	if (state == "ON") {
-		code = code + `pwmBuzzer${connector}.duty_u16(95)\n`;
+		code = code + `pwmBuzzer_${connector}.duty_u16(95)\n`;
 	} else {
-		code = code + `pwmBuzzer${connector}.duty_u16(0)\n`;
+		code = code + `pwmBuzzer_${connector}.duty_u16(0)\n`;
 	}
 
 	return code;
 };
 
+// frsef_LED_button_init
+Blockly.Python['frsef_LED_button_init'] = function(block) {
+	
+	Blockly.Python.definitions_['import_pin'] = 'from machine import Pin';
 
+	// Get the field named CONNECTOR from the block
+	var connector = block.getFieldValue('CONNECTOR');
+	
+	var code = 
+		`ledButton_LED_${connector} = Pin(grove_connector_lookup_pin1('${connector}'))\n` +
+		`ledButton_Button_${connector} = Pin(grove_connector_lookup_pin2('${connector}'))\n`;
+
+	return `#frsef_LED_button_init connector: ${connector} \n` + code + '\n'
+};
+
+// frsef_LED_button_read
+Blockly.Python['frsef_LED_button_read'] = function(block) {
+	var connector = block.getFieldValue('CONNECTOR');
+	
+	var code = 
+		`#frsef_LED_button_read: ${connector} \n` +
+		`ledButton_Button_${connector}.value()\n`;
+
+	return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+// frsef_LED_button_set_LED
+Blockly.Python['frsef_LED_button_set_LED'] = function(block) {
+	var value_pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_NONE);
+	var state = block.getFieldValue('STATE'); // the state is a Blockly field, not a Blockly value
+	
+	return `#frsef_LED_button_set_LED PIN: ${value_pin} \n#frsef_LED_button_set_LED STATE: ${state} \n`;
+	// return [pin, Blockly.Python.ORDER_NONE];
+};
 
 
 
