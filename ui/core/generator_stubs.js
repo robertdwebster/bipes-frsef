@@ -6710,7 +6710,7 @@ Blockly.Python['threepi_bump_right_is_pressed'] = function(block) {
 //
 //
 
-// frsef_buzzer_init - Block is used to declare any functions that need to be used by the other blocks 
+// frsef_grove_board_init - Block is used to declare any functions that need to be used by the other blocks 
 Blockly.Python['frsef_grove_board_init'] = function(block) {	
 	// Lookup function for Pin 1 of Grove connector to pin on Pi Pico 
 	var groveConnectorLookupPin1FunctionString = 
@@ -6744,30 +6744,17 @@ Blockly.Python['frsef_grove_board_init'] = function(block) {
 					'\'A2\': 27,' +
                '}[x]\n';
 
+
+	// TODO: Add Python code from /staging/create_pico_board.py
+
+
+
+
+
+
+	// The string of Python code to be returned and written to the executed Python file
 	return `#frsef_grove_board_init: \n` + groveConnectorLookupPin1FunctionString + groveConnectorLookupPin2FunctionString + '\n';
 
-};
-
-// frsef_pinout_digital
-Blockly.Python['frsef_pinout_digital'] = function(block) {
-	var pin = block.getFieldValue('PIN');
-	
-	return [pin, Blockly.Python.ORDER_NONE];
-};
-
-// frsef_pinout_analog
-Blockly.Python['frsef_pinout_analog'] = function(block) {
-	var pin = block.getFieldValue('PIN');
-	
-	return [pin, Blockly.Python.ORDER_NONE];
-};
-
-// frsef_mini_pir_init
-Blockly.Python['frsef_mini_pir_init'] = function(block) {
-	var value_pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_NONE);
-	
-	return `#frsef_mini_pir_init: ${value_pin} \n`;
-	// return [pin, Blockly.Python.ORDER_NONE];
 };
 
 // frsef_mini_pir_read
@@ -6775,14 +6762,6 @@ Blockly.Python['frsef_mini_pir_read'] = function(block) {
 	var value_pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_NONE);
 	
 	return `#frsef_mini_pir_read: ${value_pin} \n`;
-	// return [pin, Blockly.Python.ORDER_NONE];
-};
-
-// frsef_loudness_init
-Blockly.Python['frsef_loudness_init'] = function(block) {
-	var value_pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_NONE);
-	
-	return `#frsef_loudness_init: ${value_pin} \n`;
 	// return [pin, Blockly.Python.ORDER_NONE];
 };
 
@@ -6794,27 +6773,11 @@ Blockly.Python['frsef_loudness_read'] = function(block) {
 	// return [pin, Blockly.Python.ORDER_NONE];
 };
 
-// frsef_light_init
-Blockly.Python['frsef_light_init'] = function(block) {
-	var value_pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_NONE);
-	
-	return `#frsef_light_init: ${value_pin} \n`;
-	// return [pin, Blockly.Python.ORDER_NONE];
-};
-
 // frsef_light_read
 Blockly.Python['frsef_light_read'] = function(block) {
 	var value_pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_NONE);
 	
 	return `#frsef_light_read: ${value_pin} \n`;
-	// return [pin, Blockly.Python.ORDER_NONE];
-};
-
-// frsef_ultrasonic_init
-Blockly.Python['frsef_ultrasonic_init'] = function(block) {
-	var value_pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_NONE);
-	
-	return `#frsef_ultrasonic_init: ${value_pin} \n`;
 	// return [pin, Blockly.Python.ORDER_NONE];
 };
 
@@ -6826,47 +6789,12 @@ Blockly.Python['frsef_ultrasonic_read'] = function(block) {
 	// return [pin, Blockly.Python.ORDER_NONE];
 };
 
-// frsef_LED_init
-Blockly.Python['frsef_LED_init'] = function(block) {
-	var value_pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_NONE);
-	
-	return `#frsef_LED_init: ${value_pin} \n`;
-	// return [pin, Blockly.Python.ORDER_NONE];
-};
-
-// frsef_LED_set_state
-Blockly.Python['frsef_LED_set_state'] = function(block) {
-	var value_pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_NONE);
+// frsef_LED_set
+Blockly.Python['frsef_LED_set'] = function(block) {
 	var state = block.getFieldValue('STATE'); // the state is a Blockly field, not a Blockly value
-	
-	return `#frsef_LED_set_state PIN: ${value_pin} \n#frsef_LED_set_state STATE: ${state} \n`;
-	// return [pin, Blockly.Python.ORDER_NONE];
-};
-
-// frsef_LED_set_color
-Blockly.Python['frsef_LED_set_color'] = function(block) {
-	var value_pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_NONE);
 	var color = block.getFieldValue('COLOR'); // the state is a Blockly field, not a Blockly value
 	
-	return `#frsef_LED_set_color PIN: ${value_pin} \n#frsef_LED_set_color COLOR: ${color} \n`;
-	// return [pin, Blockly.Python.ORDER_NONE];
-};
-
-// frsef_buzzer_init
-Blockly.Python['frsef_buzzer_init'] = function(block) {
-			
-	Blockly.Python.definitions_['import_pin'] = 'from machine import Pin';
-	Blockly.Python.definitions_['import_pwm'] = 'from machine import PWM';
-	
-	// Get the field named CONNECTOR from the block
-	var connector = block.getFieldValue('CONNECTOR');
-
-	var code = 
-		`pwmBuzzer_${connector} = PWM(Pin(grove_connector_lookup_pin1('${connector}')))\n` +
-		`pwmBuzzer_${connector}.freq(888)\n` +
-		`pwmBuzzer_${connector}.duty_u16(0)\n`;
-
-	return `#frsef_buzzer_init: connector ${connector} \n` + code + '\n';
+	return `#frsef_LED_set STATE: ${state} \n#frsef_LED_set COLOR: ${color} \n`;
 };
 
 // frsef_buzzer_set
@@ -6883,21 +6811,6 @@ Blockly.Python['frsef_buzzer_set'] = function(block) {
 	}
 
 	return code;
-};
-
-// frsef_LED_button_init
-Blockly.Python['frsef_LED_button_init'] = function(block) {
-	
-	Blockly.Python.definitions_['import_pin'] = 'from machine import Pin';
-
-	// Get the field named CONNECTOR from the block
-	var connector = block.getFieldValue('CONNECTOR');
-	
-	var code = 
-		`ledButton_LED_${connector} = Pin(grove_connector_lookup_pin1('${connector}'))\n` +
-		`ledButton_Button_${connector} = Pin(grove_connector_lookup_pin2('${connector}'))\n`;
-
-	return `#frsef_LED_button_init connector: ${connector} \n` + code + '\n'
 };
 
 // frsef_LED_button_read
@@ -6917,32 +6830,5 @@ Blockly.Python['frsef_LED_button_set_LED'] = function(block) {
 	var state = block.getFieldValue('STATE'); // the state is a Blockly field, not a Blockly value
 	
 	return `#frsef_LED_button_set_LED PIN: ${value_pin} \n#frsef_LED_button_set_LED STATE: ${state} \n`;
-	// return [pin, Blockly.Python.ORDER_NONE];
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// --- Demo block for FRSEF ---
-Blockly.Python['frsef_buzzer_demo'] = function(block) {
-	var value_pin = Blockly.Python.valueToCode(block, 'pin', Blockly.Python.ORDER_NONE);
-	var value_frequency = Blockly.Python.valueToCode(block, 'frequency', Blockly.Python.ORDER_ATOMIC);
-	var value_duty = Blockly.Python.valueToCode(block, 'duty', Blockly.Python.ORDER_ATOMIC);
-	Blockly.Python.definitions_['import_pin'] = 'from machine import Pin';
-	Blockly.Python.definitions_['import_pwm'] = 'from machine import PWM';
-
-  this.check([value_frequency,value_duty], value_pin);
-	var code = `pwm${value_pin} = PWM(Pin(${value_pin}))\npwm${value_pin}.freq(${value_frequency})\npwm${value_pin}.duty_u16(${value_duty})\n`;
-	return code;
-};

@@ -12580,7 +12580,7 @@ Blockly.Blocks['data_value'] = {
 //
 //
 
-/// Start Grove Board (this is used to add functions to the generated code that will be used by all blocks)
+/// Create Grove Board (this is used to add functions to the generated code that will be used by all blocks)
 Blockly.Blocks['frsef_grove_board_init'] = {
   init: function() {
     this.appendDummyInput()
@@ -12589,68 +12589,7 @@ Blockly.Blocks['frsef_grove_board_init'] = {
                      100,
                      100,
                      "*"))
-        .appendField("Start Grove board");
-    this.setNextStatement(true, null);
-    this.setColour(230);
-  }
-};
-
-// Pin declaration from Pi Pico list, digital
-Blockly.Blocks['frsef_pinout_digital'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField(new Blockly.FieldLabelSerializable(this.device_init), 'DEVICE') // will use device_init if new block or no device specification on XML.
-        .appendField('digital pin')
-        .appendField(new Blockly.FieldDropdown([
-          ['UART0', 'UART0'],
-          ['UART1', 'UART1'],
-          ['D16', 'D16'],
-          ['D18', 'D18'],
-          ['D20', 'D20'],
-          ['I2C0', 'I2C0'],
-          ['I2C1', 'I2C1'],
-          ['A0', 'A0'],
-          ['A1', 'A1'],
-          ['A2', 'A2']
-        ]), 'PIN');
-    this.getField('DEVICE').setVisible(false);
-    this.setOutput(true, 'frsef_pinout_digital'); // You can check that this type of block is used as a connection to another block, if the other block uses this string in setCheck
-    this.setColour(230);
-  },
-};
-
-// Pin declaration from Pi Pico list, analog 
-Blockly.Blocks['frsef_pinout_analog'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField(new Blockly.FieldLabelSerializable(this.device_init), 'DEVICE') // will use device_init if new block or no device specification on XML.
-        .appendField('analog pin')
-        .appendField(new Blockly.FieldDropdown([
-          ['A0', 'A0'],
-          ['A1', 'A1'],
-          ['A2', 'A2']
-        ]), 'PIN');
-    this.getField('DEVICE').setVisible(false);
-    this.setOutput(true, 'frsef_pinout_analog'); // You can check that this type of block is used as a connection to another block, if the other block uses this string in setCheck
-    this.setColour(230);
-  },
-};
-
-/// Start Mini PIR Sensor
-Blockly.Blocks['frsef_mini_pir_init'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField(new Blockly.FieldImage(
-                     "media/mini_pir.jpg",
-                     75,
-                     75,
-                     "*"))
-        .appendField("Start Mini PIR Motion Sensor");
-    this.appendValueInput('PIN')
-        .setCheck("frsef_pinout_digital") // set a string which the connecting block must have in common in its check
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField("digital pin");
-    this.setPreviousStatement(true, null);
+        .appendField("Create Grove board");
     this.setNextStatement(true, null);
     this.setColour(230);
   }
@@ -12665,33 +12604,23 @@ Blockly.Blocks['frsef_mini_pir_read'] = {
                      75,
                      75,
                      "*"))
-        .appendField("Read from Mini PIR Motion Sensor");
-    this.appendValueInput("PIN")
-        .setCheck("frsef_pinout_digital") // set a string which the connecting block must have in common in its check
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField("digital pin");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(230);
-  }
-};
-
-/// Start Loudness Sensor
-Blockly.Blocks['frsef_loudness_init'] = {
-  init: function() {
+        .appendField("Value of Mini PIR Motion Sensor");
     this.appendDummyInput()
-        .appendField(new Blockly.FieldImage(
-                     "media/loudness.jpg",
-                     75,
-                     75,
-                     "*"))
-        .appendField("Start Loudness Sensor");
-    this.appendValueInput("PIN")
-        .setCheck("frsef_pinout_analog") // set a string which the connecting block must have in common in its check
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField("analog pin");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
+        .appendField('Grove connector')
+        .appendField(new Blockly.FieldDropdown([
+          ['UART0', 'UART0'],
+          ['UART1', 'UART1'],
+          ['D16', 'D16'],
+          ['D18', 'D18'],
+          ['D20', 'D20'],
+          ['I2C0', 'I2C0'],
+          ['I2C1', 'I2C1'],
+          ['A0', 'A0'],
+          ['A1', 'A1'],
+          ['A2', 'A2']
+        ]), 'CONNECTOR')
+        .setAlign(Blockly.ALIGN_RIGHT);
+    this.setOutput(true, null);
     this.setColour(230);
   }
 };
@@ -12705,33 +12634,16 @@ Blockly.Blocks['frsef_loudness_read'] = {
                      75,
                      75,
                      "*"))
-        .appendField("Read from Loudness Sensor");
-    this.appendValueInput("PIN")
-        .setCheck("frsef_pinout_analog") // set a string which the connecting block must have in common in its check
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField("analog pin");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(230);
-  }
-};
-
-/// Start Light Sensor
-Blockly.Blocks['frsef_light_init'] = {
-  init: function() {
+        .appendField("Value of Loudness Sensor");
     this.appendDummyInput()
-        .appendField(new Blockly.FieldImage(
-                     "media/light.jpg",
-                     75,
-                     75,
-                     "*"))
-        .appendField("Start Light Sensor");
-    this.appendValueInput("PIN")
-        .setCheck("frsef_pinout_analog") // set a string which the connecting block must have in common in its check
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField("analog pin");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
+        .appendField('Grove connector')
+        .appendField(new Blockly.FieldDropdown([
+          ['A0', 'A0'],
+          ['A1', 'A1'],
+          ['A2', 'A2']
+        ]), 'CONNECTOR')
+        .setAlign(Blockly.ALIGN_RIGHT);
+    this.setOutput(true, null);
     this.setColour(230);
   }
 };
@@ -12745,33 +12657,16 @@ Blockly.Blocks['frsef_light_read'] = {
                      75,
                      75,
                      "*"))
-        .appendField("Read from Light Sensor");
-    this.appendValueInput("PIN")
-        .setCheck("frsef_pinout_analog") // set a string which the connecting block must have in common in its check
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField("analog pin");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(230);
-  }
-};
-
-/// Start Ultrasonic Ranger
-Blockly.Blocks['frsef_ultrasonic_init'] = {
-  init: function() {
+        .appendField("Value of Light Sensor");
     this.appendDummyInput()
-        .appendField(new Blockly.FieldImage(
-                     "media/ultrasonic.jpg",
-                     80,
-                     80,
-                     "*"))
-        .appendField("Start Ultrasonic Ranger");
-    this.appendValueInput("PIN")
-        .setCheck("frsef_pinout_digital") // set a string which the connecting block must have in common in its check
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField("digital pin");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
+        .appendField('Grove connector')
+        .appendField(new Blockly.FieldDropdown([
+          ['A0', 'A0'],
+          ['A1', 'A1'],
+          ['A2', 'A2']
+        ]), 'CONNECTOR')
+        .setAlign(Blockly.ALIGN_RIGHT);
+    this.setOutput(true, null);
     this.setColour(230);
   }
 };
@@ -12785,19 +12680,29 @@ Blockly.Blocks['frsef_ultrasonic_read'] = {
                      75,
                      75,
                      "*"))
-        .appendField("Read from Ultrasonic Ranger");
-    this.appendValueInput("PIN")
-        .setCheck("frsef_pinout_digital") // set a string which the connecting block must have in common in its check
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField("digital pin");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
+        .appendField("Value of Ultrasonic Ranger");
+    this.appendDummyInput()
+        .appendField('Grove connector')
+        .appendField(new Blockly.FieldDropdown([
+          ['UART0', 'UART0'],
+          ['UART1', 'UART1'],
+          ['D16', 'D16'],
+          ['D18', 'D18'],
+          ['D20', 'D20'],
+          ['I2C0', 'I2C0'],
+          ['I2C1', 'I2C1'],
+          ['A0', 'A0'],
+          ['A1', 'A1'],
+          ['A2', 'A2']
+        ]), 'CONNECTOR')
+        .setAlign(Blockly.ALIGN_RIGHT);
+    this.setOutput(true, null);
     this.setColour(230);
   }
 };
 
-/// Declare RGB LED
-Blockly.Blocks['frsef_LED_init'] = {
+/// Chainable LED ON/OFF and/or color
+Blockly.Blocks['frsef_LED_set'] = {
   init: function() {
     this.appendDummyInput()
         .appendField(new Blockly.FieldImage(
@@ -12805,84 +12710,25 @@ Blockly.Blocks['frsef_LED_init'] = {
                      75,
                      75,
                      "*"))
-        .appendField("Declare LED");
-    this.appendValueInput("PIN")
-        .setCheck("frsef_pinout_digital") // set a string which the connecting block must have in common in its check
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField("digital pin");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(230);
-  }
-};
-
-/// Set RGB LED on/off
-Blockly.Blocks['frsef_LED_set_state'] = {
-  init: function() {
+        .appendField("Change LED");
     this.appendDummyInput()
-        .appendField(new Blockly.FieldImage(
-                     "media/chainable_led.jpg",
-                     75,
-                     75,
-                     "*"))
-        .appendField("Turn LED on or off");
-    this.appendDummyInput()
-        .appendField('instruction')
+        .appendField('on/off')
         .appendField(new Blockly.FieldDropdown([
           ['on', 'ON'],
           ['off', 'OFF']
         ]), 'STATE')
         .setAlign(Blockly.ALIGN_RIGHT);
-    this.appendValueInput("PIN")
-        .setCheck("frsef_pinout_digital") // set a string which the connecting block must have in common in its check
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField("digital pin");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    // this.setOutput(true, null);
-    this.setColour(230);
-  }
-};
-
-/// Change RGB LED color
-Blockly.Blocks['frsef_LED_set_color'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField(new Blockly.FieldImage(
-                     "media/chainable_led.jpg",
-                     75,
-                     75,
-                     "*"))
-        .appendField("Change LED color");
     this.appendDummyInput()
         .appendField('color')
         .appendField(new Blockly.FieldDropdown([
           ['red', 'RED'],
           ['green', 'GREEN'],
-          ['blue', 'BLUE']
+          ['blue', 'BLUE'],
+          ['white', 'WHITE'],
+          ['yellow', 'YELLOW']
         ]), 'COLOR')
         .setAlign(Blockly.ALIGN_RIGHT);
-    this.appendValueInput("PIN")
-        .setCheck("frsef_pinout_digital") // set a string which the connecting block must have in common in its check
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField("digital pin");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(230);
-  }
-};
-
-/// Create Buzzer
-Blockly.Blocks['frsef_buzzer_init'] = {
-  init: function() {
     this.appendDummyInput()
-        .appendField(new Blockly.FieldImage(
-                     "media/buzzer.jpg",
-                     75,
-                     75,
-                     "*"))
-        .appendField("Create Buzzer");
-        this.appendDummyInput()
         .appendField('Grove connector')
         .appendField(new Blockly.FieldDropdown([
           ['UART0', 'UART0'],
@@ -12939,37 +12785,6 @@ Blockly.Blocks['frsef_buzzer_set'] = {
   }
 };
 
-/// Create LED Button
-Blockly.Blocks['frsef_LED_button_init'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField(new Blockly.FieldImage(
-                     "media/button.jpg",
-                     80,
-                     80,
-                     "*"))
-        .appendField("Create LED Button");
-    this.appendDummyInput()
-        .appendField('Grove connector')
-        .appendField(new Blockly.FieldDropdown([
-          ['UART0', 'UART0'],
-          ['UART1', 'UART1'],
-          ['D16', 'D16'],
-          ['D18', 'D18'],
-          ['D20', 'D20'],
-          ['I2C0', 'I2C0'],
-          ['I2C1', 'I2C1'],
-          ['A0', 'A0'],
-          ['A1', 'A1'],
-          ['A2', 'A2']
-        ]), 'CONNECTOR')
-        .setAlign(Blockly.ALIGN_RIGHT);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(230);
-  }
-};
-
 /// Read from LED Button
 Blockly.Blocks['frsef_LED_button_read'] = {
   init: function() {
@@ -12995,8 +12810,6 @@ Blockly.Blocks['frsef_LED_button_read'] = {
           ['A2', 'A2']
         ]), 'CONNECTOR')
         .setAlign(Blockly.ALIGN_RIGHT);
-    // this.setPreviousStatement(true, null);
-    // this.setNextStatement(true, null);
     this.setOutput(true, null);
     this.setColour(230);
   }
@@ -13011,52 +12824,29 @@ Blockly.Blocks['frsef_LED_button_set_LED'] = {
                      80,
                      80,
                      "*"))
-        .appendField("Set LED on LED Button");
-    this.appendDummyInput()
-        .appendField('instruction')
+        .appendField("Turn LED on LED Button to")
         .appendField(new Blockly.FieldDropdown([
           ['on', 'ON'],
-          ['off', 'OFF'],
-          ['blink', 'BLINK']
+          ['off', 'OFF']
         ]), 'STATE')
         .setAlign(Blockly.ALIGN_RIGHT);
-    this.appendValueInput("PIN")
-        .setCheck("frsef_pinout_digital") // set a string which the connecting block must have in common in its check
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField("digital pin");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(230);
-  }
-};
-
-
-
-// ---
-
-// Demo block - use the buzzer, very similar to existing PWM block
-Blockly.Blocks['frsef_buzzer_demo'] = {
-  init: function(){
     this.appendDummyInput()
-        .appendField("Buzzer Example")
-    this.appendValueInput("pin")
-        .setCheck(null)
-	      .appendField(MSG["pin"]);
-    this.appendValueInput("frequency")
-        .setCheck("Number")
-	      .appendField(MSG["frequenzy"]);
-    this.appendValueInput("duty")
-        .setCheck("Number")
-	      .appendField(MSG["duty_cycle"]);
+        .appendField('Grove connector')
+        .appendField(new Blockly.FieldDropdown([
+          ['UART0', 'UART0'],
+          ['UART1', 'UART1'],
+          ['D16', 'D16'],
+          ['D18', 'D18'],
+          ['D20', 'D20'],
+          ['I2C0', 'I2C0'],
+          ['I2C1', 'I2C1'],
+          ['A0', 'A0'],
+          ['A1', 'A1'],
+          ['A2', 'A2']
+        ]), 'CONNECTOR')
+        .setAlign(Blockly.ALIGN_RIGHT);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(230);
-    this.setTooltip(MSG["pwm_tooltip"]);
- },
-  check (values, id) {
-    Tool.warningIfTrue (this, [
-      [() => (!isNaN(parseFloat(values [0])) && parseFloat(values [0]) % 1 != 0), `Cannot convert float to int directly.`],
-      [() => (!isNaN(parseFloat(values [1])) && parseFloat(values [1]) % 1 != 0), `Cannot convert float to int directly.`]
-    ]);
   }
 };
