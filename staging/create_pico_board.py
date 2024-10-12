@@ -12,12 +12,15 @@ def grove_connector_lookup_pin2(x):
 # --- BUZZER ---
 buzzer_dict = {}
 
-def buzzer_get(connectorName):
+def buzzer_set(connectorName, state):
     if connectorName not in buzzer_dict:
         pinNumber = grove_connector_lookup_pin1(connectorName)
         buzzer_dict[connectorName] = PWM(Pin(pinNumber))
         buzzer_dict[connectorName].freq(888)
-    return buzzer_dict[connectorName]
+    if state == 1:
+        return buzzer_dict[connectorName].duty_u16(95)
+    else:
+        return buzzer_dict[connectorName].duty_u16(0)
 
 
 # --- LED BUTTON ---
@@ -27,19 +30,23 @@ class LEDButton:
         self.LED = Pin(grove_connector_lookup_pin1(connectorName), Pin.OUT)
         self.Button = Pin(grove_connector_lookup_pin2(connectorName), Pin.IN)
 
-    def LED_out(self, x):
-        self.LED.value(x)
+    # def LED_out(self, x):
+    #     self.LED.value(x)
 
-    def button_in(self):
-        return not self.Button.value()
+    # def button_in(self):
+    #     return not self.Button.value()
 
 LED_button_dict = {}
 
 def led_button_get(connectorName) -> LEDButton:
     if connectorName not in LED_button_dict:
         LED_button_dict[connectorName] = LEDButton(connectorName)
-    return LED_button_dict[connectorName]
+    return not LED_button_dict[connectorName].Button.value()
 
+def led_button_set(connectorName, state):
+    if connectorName not in LED_button_dict:
+        LED_button_dict[connectorName] = LEDButton(connectorName)
+    return LED_button_dict[connectorName].LED.value(state)
 
 # --- Mini PIR Motion Sensor ---
 motion_sensor_dict = {}
@@ -48,8 +55,7 @@ def motion_sensor_get(connectorName):
     if connectorName not in motion_sensor_dict:
         pinNumber = grove_connector_lookup_pin1(connectorName)
         motion_sensor_dict[connectorName] = Pin(pinNumber, Pin.IN)
-    return motion_sensor_dict[connectorName]
-
+    return motion_sensor_dict[connectorName].value()
 
 # --- Analog Sensors: Loudness, Light, etc. ---
 analog_in_dict = {}
@@ -58,7 +64,7 @@ def analog_sensor_get(connectorName):
     if connectorName not in analog_in_dict:
         pinNumber = grove_connector_lookup_pin1(connectorName)
         analog_in_dict[connectorName] = ADC(pinNumber)
-    return analog_in_dict[connectorName]
+    return analog_in_dict[connectorName].read_u16()
 
 
 # --- Ultrasonic Ranger ---
@@ -122,7 +128,7 @@ ultrasonic_dict = {}
 def ultrasonic_get(connectorName) -> Ultrasonic:
     if connectorName not in ultrasonic_dict:
         ultrasonic_dict[connectorName] = Ultrasonic(connectorName)
-    return ultrasonic_dict[connectorName]
+    return ultrasonic_dict[connectorName].MeasureInCentimeters()
 
 
 # --- Chained LED ---

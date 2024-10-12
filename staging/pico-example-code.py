@@ -1,5 +1,5 @@
 # --- EXAMPLES ----
-# pwmBuzzer_D20 = buzzer_get('D20')
+# pwmBuzzer_D20 = buzzer_set('D20')
 # pwmBuzzer_D20.duty_u16(95)
 
 # ledButton_D20 = led_button_get('D20')

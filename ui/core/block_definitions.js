@@ -12760,8 +12760,8 @@ Blockly.Blocks['frsef_buzzer_set'] = {
                      "*"))
         .appendField("Turn Buzzer to")
         .appendField(new Blockly.FieldDropdown([
-          ['on', 'ON'],
-          ['off', 'OFF']
+          ['on', '1'],
+          ['off', '0']
         ]), 'STATE')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.appendDummyInput()
@@ -12826,8 +12826,8 @@ Blockly.Blocks['frsef_LED_button_set_LED'] = {
                      "*"))
         .appendField("Turn LED on LED Button to")
         .appendField(new Blockly.FieldDropdown([
-          ['on', 'ON'],
-          ['off', 'OFF']
+          ['on', '1'],
+          ['off', '0']
         ]), 'STATE')
         .setAlign(Blockly.ALIGN_RIGHT);
     this.appendDummyInput()
