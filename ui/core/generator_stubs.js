@@ -6980,31 +6980,30 @@ Blockly.Python['frsef_grove_board_init'] = function(block) {
 	groveLibraryFunctionString+='\n'
 	groveLibraryFunctionString+='chainable_LED_dict = {}\n'
 	groveLibraryFunctionString+='\n'
-	groveLibraryFunctionString+='def chainable_LED_set_state(connectorName, state, colorString):\n'
+	groveLibraryFunctionString+='def chainable_LED_set_state(connectorName, colorString):\n'
 	groveLibraryFunctionString+='    if connectorName not in chainable_LED_dict:\n'
 	groveLibraryFunctionString+='        pin_clk = Pin(grove_connector_lookup_pin1(connectorName), Pin.OUT)\n'
 	groveLibraryFunctionString+='        pin_data = Pin(grove_connector_lookup_pin2(connectorName), Pin.OUT)\n'
 	groveLibraryFunctionString+='        chainable_LED_dict[connectorName] = P9813_BITBANG(pin_clk, pin_data, 1) # Todo: the number could be a parameter\n'
 	groveLibraryFunctionString+='    \n'
-	groveLibraryFunctionString+='    if state == 0:\n'
+	groveLibraryFunctionString+='    if colorString == "OFF":\n'
 	groveLibraryFunctionString+='        chainable_LED_dict[connectorName].fill((0, 0, 0))\n'
-	groveLibraryFunctionString+='    else:\n'
-	groveLibraryFunctionString+='        if colorString == "RED":\n'
-	groveLibraryFunctionString+='            chainable_LED_dict[connectorName].fill((255, 0, 0))\n'
-	groveLibraryFunctionString+='        elif colorString == "GREEN":\n'
-	groveLibraryFunctionString+='            chainable_LED_dict[connectorName].fill((0, 255, 0))\n'
-	groveLibraryFunctionString+='        elif colorString == "BLUE":\n'
-	groveLibraryFunctionString+='            chainable_LED_dict[connectorName].fill((0, 0, 255))\n'
-	groveLibraryFunctionString+='        elif colorString == "WHITE":\n'
-	groveLibraryFunctionString+='            chainable_LED_dict[connectorName].fill((255, 255, 255))\n'
-	groveLibraryFunctionString+='        elif colorString == "YELLOW":\n'
-	groveLibraryFunctionString+='            chainable_LED_dict[connectorName].fill((255, 255, 0))\n'
-	groveLibraryFunctionString+='        elif colorString == "ORANGE":\n'
-	groveLibraryFunctionString+='            chainable_LED_dict[connectorName].fill((255, 128, 0))\n'
-	groveLibraryFunctionString+='        elif colorString == "PINK":\n'
-	groveLibraryFunctionString+='            chainable_LED_dict[connectorName].fill((255, 192, 203))\n'
-	groveLibraryFunctionString+='        elif colorString == "PURPLE":\n'
-	groveLibraryFunctionString+='            chainable_LED_dict[connectorName].fill((233, 65, 150))'
+	groveLibraryFunctionString+='    elif colorString == "RED":\n'
+	groveLibraryFunctionString+='        chainable_LED_dict[connectorName].fill((255, 0, 0))\n'
+	groveLibraryFunctionString+='    elif colorString == "GREEN":\n'
+	groveLibraryFunctionString+='        chainable_LED_dict[connectorName].fill((0, 255, 0))\n'
+	groveLibraryFunctionString+='    elif colorString == "BLUE":\n'
+	groveLibraryFunctionString+='        chainable_LED_dict[connectorName].fill((0, 0, 255))\n'
+	groveLibraryFunctionString+='    elif colorString == "WHITE":\n'
+	groveLibraryFunctionString+='        chainable_LED_dict[connectorName].fill((255, 255, 255))\n'
+	groveLibraryFunctionString+='    elif colorString == "YELLOW":\n'
+	groveLibraryFunctionString+='        chainable_LED_dict[connectorName].fill((255, 255, 0))\n'
+	groveLibraryFunctionString+='    elif colorString == "ORANGE":\n'
+	groveLibraryFunctionString+='        chainable_LED_dict[connectorName].fill((255, 128, 0))\n'
+	groveLibraryFunctionString+='    elif colorString == "PINK":\n'
+	groveLibraryFunctionString+='        chainable_LED_dict[connectorName].fill((233, 65, 150))\n'
+	groveLibraryFunctionString+='    elif colorString == "PURPLE":\n'
+	groveLibraryFunctionString+='        chainable_LED_dict[connectorName].fill((84, 21, 57))'
 
 	// The string of Python code to be returned and written to the executed Python file
 	return `#frsef_grove_board_init: \n` + groveLibraryFunctionString + '\n';
@@ -7042,10 +7041,9 @@ Blockly.Python['frsef_ultrasonic_read'] = function(block) {
 // frsef_LED_set
 Blockly.Python['frsef_LED_set'] = function(block) {
 	var connector = block.getFieldValue('CONNECTOR')
-	var state = block.getFieldValue('STATE')
 	var color = block.getFieldValue('COLOR')
 	
-	var code = `chainable_LED_set_state('${connector}', ${state}, '${color}')\n`
+	var code = `chainable_LED_set_state('${connector}', '${color}')\n`
 	return code;
 };
 

@@ -12712,15 +12712,9 @@ Blockly.Blocks['frsef_LED_set'] = {
                      "*"))
         .appendField("Change LED");
     this.appendDummyInput()
-        .appendField('on/off')
-        .appendField(new Blockly.FieldDropdown([
-          ['on', '1'],
-          ['off', '0']
-        ]), 'STATE')
-        .setAlign(Blockly.ALIGN_RIGHT);
-    this.appendDummyInput()
         .appendField('color')
         .appendField(new Blockly.FieldDropdown([
+          ['off', 'OFF'],
           ['white', 'WHITE'],
           ['red', 'RED'],
           ['green', 'GREEN'],
