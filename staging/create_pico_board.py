@@ -271,21 +271,21 @@ def chainable_LED_set_state(connectorName, state, colorString):
         chainable_LED_dict[connectorName] = P9813_BITBANG(pin_clk, pin_data, 1) # Todo: the number could be a parameter
     
     if state == 0:
-        chainable_LED_dict[connectorName].fill(0, 0, 0)
+        chainable_LED_dict[connectorName].fill((0, 0, 0))
     else:
         if colorString == "RED":
-            chainable_LED_dict[connectorName].fill(255, 0, 0)
+            chainable_LED_dict[connectorName].fill((255, 0, 0))
         elif colorString == "GREEN":
-            chainable_LED_dict[connectorName].fill(0, 255, 0)
+            chainable_LED_dict[connectorName].fill((0, 255, 0))
         elif colorString == "BLUE":
-            chainable_LED_dict[connectorName].fill(0, 0, 255)
+            chainable_LED_dict[connectorName].fill((0, 0, 255))
         elif colorString == "WHITE":
-            chainable_LED_dict[connectorName].fill(255, 255, 255)
+            chainable_LED_dict[connectorName].fill((255, 255, 255))
         elif colorString == "YELLOW":
-            chainable_LED_dict[connectorName].fill(255, 255, 0)
+            chainable_LED_dict[connectorName].fill((255, 255, 0))
         elif colorString == "ORANGE":
-            chainable_LED_dict[connectorName].fill(255, 128, 0)
+            chainable_LED_dict[connectorName].fill((255, 128, 0))
         elif colorString == "PINK":
-            chainable_LED_dict[connectorName].fill(255, 192, 203)
+            chainable_LED_dict[connectorName].fill((255, 192, 203))
         elif colorString == "PURPLE":
-            chainable_LED_dict[connectorName].fill(233, 65, 150)
+            chainable_LED_dict[connectorName].fill((233, 65, 150))
