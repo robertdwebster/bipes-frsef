@@ -6787,11 +6787,12 @@ Blockly.Python['frsef_ultrasonic_read'] = function(block) {
 
 // frsef_LED_set
 Blockly.Python['frsef_LED_set'] = function(block) {
+	var connector = block.getFieldValue('CONNECTOR')
 	var state = block.getFieldValue('STATE')
 	var color = block.getFieldValue('COLOR')
-	var connector = block.getFieldValue('CONNECTOR')
 	
-	return `#frsef_LED_set STATE: ${state} \n#frsef_LED_set COLOR: ${color} \n`;
+	var code = `chainable_LED_set_state('${connector}', ${state}, '${color}')\n`
+	return code;
 };
 
 // frsef_buzzer_set

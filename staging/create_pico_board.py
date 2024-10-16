@@ -264,9 +264,28 @@ class P9813_BITBANG(P9813):
 
 chainable_LED_dict = {}
 
-def chainable_LED_get(connectorName) -> P9813_BITBANG:
+def chainable_LED_set_state(connectorName, state, colorString):
     if connectorName not in chainable_LED_dict:
         pin_clk = Pin(grove_connector_lookup_pin1(connectorName), Pin.OUT)
         pin_data = Pin(grove_connector_lookup_pin2(connectorName), Pin.OUT)
         chainable_LED_dict[connectorName] = P9813_BITBANG(pin_clk, pin_data, 1) # Todo: the number could be a parameter
-    return chainable_LED_dict[connectorName]
+    
+    if state == 0:
+        chainable_LED_dict[connectorName].fill(0, 0, 0)
+    else:
+        if colorString == "RED":
+            chainable_LED_dict[connectorName].fill(255, 0, 0)
+        elif colorString == "GREEN":
+            chainable_LED_dict[connectorName].fill(0, 255, 0)
+        elif colorString == "BLUE":
+            chainable_LED_dict[connectorName].fill(0, 0, 255)
+        elif colorString == "WHITE":
+            chainable_LED_dict[connectorName].fill(255, 255, 255)
+        elif colorString == "YELLOW":
+            chainable_LED_dict[connectorName].fill(255, 255, 0)
+        elif colorString == "ORANGE":
+            chainable_LED_dict[connectorName].fill(255, 128, 0)
+        elif colorString == "PINK":
+            chainable_LED_dict[connectorName].fill(255, 192, 203)
+        elif colorString == "PURPLE":
+            chainable_LED_dict[connectorName].fill(233, 65, 150)
