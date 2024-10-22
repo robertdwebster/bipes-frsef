@@ -1,0 +1,52 @@
+<xml xmlns="https://bipes.net.br">
+  <workspace>
+    <field name="DEVICE">RPI_Pico</field>
+    <field name="TIMESTAMP">1729217253988</field>
+    <freeboard><![CDATA[]]></freeboard>
+    <databoard><![CDATA[]]></databoard> 
+  </workspace>
+  <block type="frsef_grove_board_init" id="G%t((xQ1_df~}V:db/_k" x="-363" y="-562">
+    <next>
+      <block type="controls_whileUntil" id="H`|e{5#]heQy%eEu[UD4">
+        <field name="MODE">WHILE</field>
+        <value name="BOOL">
+          <block type="logic_boolean" id="N;!@6AoGH0W13/dBrq)v">
+            <field name="BOOL">TRUE</field>
+          </block>
+        </value>
+        <statement name="DO">
+          <block type="frsef_LED_button_set_LED" id="Lh:hE5#fAGNg|)ypUGkh">
+            <field name="STATE">1</field>
+            <field name="CONNECTOR">D20</field>
+            <next>
+              <block type="delay" id="=~43Is(brD~5P.I~`_HH">
+                <field name="SCALE">sleep</field>
+                <value name="TIME">
+                  <shadow type="math_number" id="CZ}FTBnPBB,y_KUyc,u#">
+                    <field name="NUM">0.5</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="frsef_LED_button_set_LED" id="H/U-i|ep[p]8A#HW){R,">
+                    <field name="STATE">0</field>
+                    <field name="CONNECTOR">D20</field>
+                    <next>
+                      <block type="delay" id="|hKV2@q(MR)M.GLr%6r(">
+                        <field name="SCALE">sleep</field>
+                        <value name="TIME">
+                          <shadow type="math_number" id="YaU)AZ$a5R@w~8e$}y?g">
+                            <field name="NUM">0.5</field>
+                          </shadow>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </next>
+  </block>
+</xml>

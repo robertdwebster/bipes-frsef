@@ -1,0 +1,52 @@
+<xml xmlns="https://bipes.net.br">
+  <workspace>
+    <field name="DEVICE">RPI_Pico</field>
+    <field name="TIMESTAMP">1729216968579</field>
+    <freeboard><![CDATA[]]></freeboard>
+    <databoard><![CDATA[]]></databoard> 
+  </workspace>
+  <block type="frsef_grove_board_init" id="7_KyTBrd(jZ/yj,YY-:W" x="-287" y="-512">
+    <next>
+      <block type="controls_whileUntil" id="VBNz|LUGe+eOdx?pRdex">
+        <field name="MODE">WHILE</field>
+        <value name="BOOL">
+          <block type="logic_boolean" id="+@?=JtQq1(zO/b!Wd%Sl">
+            <field name="BOOL">TRUE</field>
+          </block>
+        </value>
+        <statement name="DO">
+          <block type="controls_if" id="pg,MhQca?yij*hDShwgP">
+            <mutation else="1"></mutation>
+            <value name="IF0">
+              <block type="logic_compare" id="mHgl4GnX?-]lyd5~!8Nf">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="frsef_LED_button_read" id="trsrLgjHznBkh2i;6eTn">
+                    <field name="CONNECTOR">D20</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="logic_boolean" id="{,$Y)bfq~vFU-v2Y4:C|">
+                    <field name="BOOL">TRUE</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="frsef_LED_button_set_LED" id="j)Mmcqe.bF^{2{vDpFKm">
+                <field name="STATE">1</field>
+                <field name="CONNECTOR">D20</field>
+              </block>
+            </statement>
+            <statement name="ELSE">
+              <block type="frsef_LED_button_set_LED" id="KAdzI-9xC])^q-}[zv5D">
+                <field name="STATE">0</field>
+                <field name="CONNECTOR">D20</field>
+              </block>
+            </statement>
+          </block>
+        </statement>
+      </block>
+    </next>
+  </block>
+</xml>

@@ -1,0 +1,137 @@
+<xml xmlns="https://bipes.net.br">
+  <workspace>
+    <field name="DEVICE">RPI_Pico</field>
+    <field name="TIMESTAMP">1729564203830</field>
+    <freeboard><![CDATA[]]></freeboard>
+    <databoard><![CDATA[]]></databoard> 
+  </workspace>
+  <variables>
+    <variable id="e!qktIWO_tNbM(-WC}7E">time_counter</variable>
+  </variables>
+  <block type="frsef_grove_board_init" id="6zDSc;cbj`mEQD6kssJ7" x="-63" y="-788">
+    <next>
+      <block type="controls_whileUntil" id="Q;l2?/sREGyy`7XfVXhz">
+        <field name="MODE">WHILE</field>
+        <value name="BOOL">
+          <block type="logic_boolean" id="iS02}=bs}S_dKr)2vv3N">
+            <field name="BOOL">TRUE</field>
+          </block>
+        </value>
+        <statement name="DO">
+          <block type="variables_set" id="u!p^qvm/~R9-UnKL@%bU">
+            <field name="VAR" id="e!qktIWO_tNbM(-WC}7E">time_counter</field>
+            <value name="VALUE">
+              <block type="math_number" id="J[4zT/lC?+2;.IYdmHr|">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <next>
+              <block type="controls_whileUntil" id="W.`j%p}RZxBp[q.6n6Oi">
+                <field name="MODE">WHILE</field>
+                <value name="BOOL">
+                  <block type="logic_operation" id="suejyS7X9UXtfd];#@-r">
+                    <field name="OP">AND</field>
+                    <value name="A">
+                      <block type="logic_compare" id="?AjwF8kYh|=!zr}68B=T">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="frsef_mini_pir_read" id="ue3/e?9-u[MFG#a`5_.x">
+                            <field name="CONNECTOR">D16</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="logic_boolean" id="p]I;3CVNGmp-B;V]rBTi">
+                            <field name="BOOL">TRUE</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="logic_compare" id="JANvr5bld@t4xTo(q2WT">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="frsef_LED_button_read" id="p0j1mNHVgwyL6RtR_CjE">
+                            <field name="CONNECTOR">D20</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="logic_boolean" id="kSpF8zXRB^U5%/+v5Qr}">
+                            <field name="BOOL">FALSE</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO">
+                  <block type="variables_set" id="/I-^M#B]GNYnBV8m^T|6">
+                    <field name="VAR" id="e!qktIWO_tNbM(-WC}7E">time_counter</field>
+                    <value name="VALUE">
+                      <block type="math_arithmetic" id="8HIe[)mZxGN5R+J?#}fn">
+                        <field name="OP">ADD</field>
+                        <value name="A">
+                          <shadow xmlns="https://bipes.net.br" type="math_number">
+                            <field name="NUM">1</field>
+                          </shadow>
+                          <block type="variables_get" id=")2VH|3;E=,V36s;{GthD">
+                            <field name="VAR" id="e!qktIWO_tNbM(-WC}7E">time_counter</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <shadow type="math_number" id="yaq@B*#fn+AxIrO.1i3m">
+                            <field name="NUM">1</field>
+                          </shadow>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="controls_if" id="Vz|hWb[3|6lU80$ST`)#">
+                        <value name="IF0">
+                          <block type="logic_compare" id="*,y$syYI]e~QM$%`([1t">
+                            <field name="OP">GT</field>
+                            <value name="A">
+                              <block type="variables_get" id="}jDC2UQqr?3X,KaB(YCX">
+                                <field name="VAR" id="e!qktIWO_tNbM(-WC}7E">time_counter</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id=";4mT!uI1_22|2z9T(PbK">
+                                <field name="NUM">50</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="frsef_buzzer_set" id="RR`Cg}g49oQWaHUY_prZ">
+                            <field name="STATE">1</field>
+                            <field name="CONNECTOR">D18</field>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="delay" id="XhC3*bi.-Pzj3fL3/Yf-">
+                            <field name="SCALE">sleep</field>
+                            <value name="TIME">
+                              <shadow type="math_number" id="SLeuDZfg0xh-AU0?Dt=|">
+                                <field name="NUM">0.1</field>
+                              </shadow>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <next>
+                  <block type="frsef_buzzer_set" id="BwFG9qbW/fnRy~2ODU:$">
+                    <field name="STATE">0</field>
+                    <field name="CONNECTOR">D18</field>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </next>
+  </block>
+</xml>
