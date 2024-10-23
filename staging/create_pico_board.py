@@ -14,14 +14,8 @@ buzzer_dict = {}
 
 def buzzer_set(connectorName, state):
     if connectorName not in buzzer_dict:
-        pinNumber = grove_connector_lookup_pin1(connectorName)
-        buzzer_dict[connectorName] = PWM(Pin(pinNumber))
-        buzzer_dict[connectorName].freq(888)
-    if state == 1:
-        return buzzer_dict[connectorName].duty_u16(95)
-    else:
-        return buzzer_dict[connectorName].duty_u16(0)
-
+        buzzer_dict[connectorName] = Pin(grove_connector_lookup_pin1(connectorName), Pin.OUT)
+    return buzzer_dict[connectorName].value(state)
 
 # --- LED BUTTON ---
 class LEDButton:
