@@ -1,7 +1,7 @@
 <xml xmlns="https://bipes.net.br">
   <workspace>
     <field name="DEVICE">RPI_Pico</field>
-    <field name="TIMESTAMP">1729563567399</field>
+    <field name="TIMESTAMP">1729905957174</field>
     <freeboard><![CDATA[]]></freeboard>
     <databoard><![CDATA[]]></databoard> 
   </workspace>
@@ -21,8 +21,8 @@
               <block type="logic_compare" id="?AjwF8kYh|=!zr}68B=T">
                 <field name="OP">EQ</field>
                 <value name="A">
-                  <block type="frsef_mini_pir_read" id="ue3/e?9-u[MFG#a`5_.x">
-                    <field name="CONNECTOR">D16</field>
+                  <block type="frsef_LED_button_read" id="v#L8[SklE0Jw.E_AHFCd">
+                    <field name="CONNECTOR">D20</field>
                   </block>
                 </value>
                 <value name="B">
@@ -32,18 +32,6 @@
                 </value>
               </block>
             </value>
-            <statement name="DO0">
-              <block type="frsef_buzzer_set" id="RR`Cg}g49oQWaHUY_prZ">
-                <field name="STATE">1</field>
-                <field name="CONNECTOR">D18</field>
-              </block>
-            </statement>
-            <statement name="ELSE">
-              <block type="frsef_buzzer_set" id="BwFG9qbW/fnRy~2ODU:$">
-                <field name="STATE">0</field>
-                <field name="CONNECTOR">D18</field>
-              </block>
-            </statement>
           </block>
         </statement>
       </block>

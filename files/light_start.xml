@@ -1,0 +1,47 @@
+<xml xmlns="https://bipes.net.br">
+  <workspace>
+    <field name="DEVICE">RPI_Pico</field>
+    <field name="TIMESTAMP">1729906366072</field>
+    <freeboard><![CDATA[]]></freeboard>
+    <databoard><![CDATA[]]></databoard> 
+  </workspace>
+  <block type="frsef_grove_board_init" id="6zDSc;cbj`mEQD6kssJ7" x="-63" y="-788">
+    <next>
+      <block type="controls_whileUntil" id="Q;l2?/sREGyy`7XfVXhz">
+        <field name="MODE">WHILE</field>
+        <value name="BOOL">
+          <block type="logic_boolean" id="iS02}=bs}S_dKr)2vv3N">
+            <field name="BOOL">TRUE</field>
+          </block>
+        </value>
+        <statement name="DO">
+          <block type="controls_if" id="Uud6Nydk]N|Ub)VKpdC=">
+            <mutation else="1"></mutation>
+            <value name="IF0">
+              <block type="logic_compare" id="?AjwF8kYh|=!zr}68B=T">
+                <field name="OP">GT</field>
+                <value name="A">
+                  <block type="frsef_light_read" id="Ea1BBj_P*j{zJeQLDaea">
+                    <field name="CONNECTOR">A2</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="frsef_buzzer_set" id="RR`Cg}g49oQWaHUY_prZ">
+                <field name="STATE">1</field>
+                <field name="CONNECTOR">D18</field>
+              </block>
+            </statement>
+            <statement name="ELSE">
+              <block type="frsef_buzzer_set" id="BwFG9qbW/fnRy~2ODU:$">
+                <field name="STATE">0</field>
+                <field name="CONNECTOR">D18</field>
+              </block>
+            </statement>
+          </block>
+        </statement>
+      </block>
+    </next>
+  </block>
+</xml>

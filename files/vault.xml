@@ -1,7 +1,7 @@
 <xml xmlns="https://bipes.net.br">
   <workspace>
     <field name="DEVICE">RPI_Pico</field>
-    <field name="TIMESTAMP">1729564203830</field>
+    <field name="TIMESTAMP">1729573800365</field>
     <freeboard><![CDATA[]]></freeboard>
     <databoard><![CDATA[]]></databoard> 
   </workspace>
@@ -32,16 +32,16 @@
                   <block type="logic_operation" id="suejyS7X9UXtfd];#@-r">
                     <field name="OP">AND</field>
                     <value name="A">
-                      <block type="logic_compare" id="?AjwF8kYh|=!zr}68B=T">
-                        <field name="OP">EQ</field>
+                      <block type="logic_compare" id="ZJQ{o]daz84:%X$Zt27w">
+                        <field name="OP">GT</field>
                         <value name="A">
-                          <block type="frsef_mini_pir_read" id="ue3/e?9-u[MFG#a`5_.x">
-                            <field name="CONNECTOR">D16</field>
+                          <block type="frsef_light_read" id="i%q}|.j+bgh7`%9Wr7G$">
+                            <field name="CONNECTOR">A2</field>
                           </block>
                         </value>
                         <value name="B">
-                          <block type="logic_boolean" id="p]I;3CVNGmp-B;V]rBTi">
-                            <field name="BOOL">TRUE</field>
+                          <block type="math_number" id="#%h9U*ZUdx?^Ehflmlp`">
+                            <field name="NUM">5000</field>
                           </block>
                         </value>
                       </block>
@@ -55,8 +55,8 @@
                           </block>
                         </value>
                         <value name="B">
-                          <block type="logic_boolean" id="kSpF8zXRB^U5%/+v5Qr}">
-                            <field name="BOOL">FALSE</field>
+                          <block type="math_number" id="CXuWHw|fvjvnqHk7[I=.">
+                            <field name="NUM">0</field>
                           </block>
                         </value>
                       </block>
@@ -108,10 +108,10 @@
                           </block>
                         </statement>
                         <next>
-                          <block type="delay" id="XhC3*bi.-Pzj3fL3/Yf-">
+                          <block type="delay" id="+6x;@(ebfVGn5x+lZa{0">
                             <field name="SCALE">sleep</field>
                             <value name="TIME">
-                              <shadow type="math_number" id="SLeuDZfg0xh-AU0?Dt=|">
+                              <shadow type="math_number" id="zYN2jm0}I_Qg,)Ayo(:c">
                                 <field name="NUM">0.1</field>
                               </shadow>
                             </value>
@@ -125,6 +125,36 @@
                   <block type="frsef_buzzer_set" id="BwFG9qbW/fnRy~2ODU:$">
                     <field name="STATE">0</field>
                     <field name="CONNECTOR">D18</field>
+                    <next>
+                      <block type="controls_whileUntil" id="g$1PI3oc/VC#hNm2;WZ7">
+                        <field name="MODE">WHILE</field>
+                        <value name="BOOL">
+                          <block type="logic_compare" id="?AjwF8kYh|=!zr}68B=T">
+                            <field name="OP">GT</field>
+                            <value name="A">
+                              <block type="frsef_light_read" id="GuVO3cqj,@V1U]l6R`f0">
+                                <field name="CONNECTOR">A2</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="0v;q;9t~JktpQtfPud61">
+                                <field name="NUM">5000</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO">
+                          <block type="delay" id="XhC3*bi.-Pzj3fL3/Yf-">
+                            <field name="SCALE">sleep</field>
+                            <value name="TIME">
+                              <shadow type="math_number" id="SLeuDZfg0xh-AU0?Dt=|">
+                                <field name="NUM">0.1</field>
+                              </shadow>
+                            </value>
+                          </block>
+                        </statement>
+                      </block>
+                    </next>
                   </block>
                 </next>
               </block>
